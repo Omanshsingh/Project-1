@@ -1,14 +1,79 @@
-
-body {
-  background-color: black;
-  font-family: Arial, sans-serif;
+/* --- Global Reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+/* --- Page Layout (Centers everything) --- */
+body, .parent {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0c0c0c; /* Almost black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Allows multiple cards to sit side-by-side */
+  gap: 30px; /* Space between cards */
+}
+
+/* --- Card Container --- */
 .card {
-  width: 300px;
-  border: 1px solid #ccc;
-  padding: 20px;
-  color: #ccc;
-  align-self: center;
+  background-color: #1a1a1a; /* Dark grey card */
+  border: 1px solid #444;    /* Subtle border */
+  border-radius: 12px;       /* Rounded corners */
+  padding: 30px 20px;
+  width: 320px;
   text-align: center;
+  color: white;
+  transition: transform 0.2s; /* Smooth hover effect */
+}
+
+/* Optional: Slight pop when you hover over the card */
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #fff;
+}
+
+/* --- Profile Image --- */
+.card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* Makes the image a perfect circle */
+  object-fit: cover;  /* Prevents image stretching */
+  margin-bottom: 15px;
+  border: 3px solid #1a1a1a; /* Adds a small border matching the card bg */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* --- Text Styles --- */
+.card h1, .card h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #a1a1a1; /* Light grey text */
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+/* --- Button Styles --- */
+.card button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.card button:hover {
+  background-color: #e2e2e2; /* Slightly darker white on hover */
 }
