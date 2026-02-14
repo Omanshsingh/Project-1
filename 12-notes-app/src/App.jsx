@@ -5,25 +5,21 @@ import { SquarePen } from "lucide-react";
 const App = () => {
   const [notes, setNotes] = useState("");
   const [details, setDetails] = useState("");
-  const [task, setTask] = useState([]);
+
+  const [task, setTask] = useState(() => {
+    const saved = localStorage.getItem("notes");
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const [editIndex, setEditIndex] = useState(null);
-
-  const deleteButton = (idx) => {
-    const copyTask = [...task];
-    copyTask.splice(idx, 1);
-    setTask(copyTask);
-  };
-
-  useEffect(() => {
-    const savedNotes = JSON.parse(localStorage.getItem("notes"));
-    if (savedNotes) {
-      setTask(savedNotes);
-    }
-  }, []);
 
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(task));
   }, [task]);
+
+  const deleteButton = (idx) => {
+    setTask(task.filter((_, index) => index !== idx));
+  };
 
   const updateButton = (idx) => {
     setNotes(task[idx].notes);
